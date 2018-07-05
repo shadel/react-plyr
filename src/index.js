@@ -217,6 +217,9 @@ class Plyr extends Component {
     if (prevProps.videoId !== this.props.videoId) {
       this.props.videoId && this.updateVideoSource(this.props.videoId, this.props.provider);
     }
+    if (this.props.sources.length > 0 && prevProps.sources.length > 0 && prevProps.sources[0].src !== this.props.sources[0].src){
+      this.updateHtmlVideoSource(this.props.sources[0].src, 'video', '');
+    }
   }
 
   componentWillUnmount() {
