@@ -208,7 +208,8 @@ const defaultProps = {
   ads: {
     enabled: false,
     publisherId: '',
-  }
+  },
+  currentTime: 0 
 };
 
 export default defaultProps;

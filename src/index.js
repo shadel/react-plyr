@@ -116,7 +116,8 @@ class Plyr extends Component {
         type: PropTypes.string.isRequired,
         size: PropTypes.string
       })
-    )
+    ),
+    currentTime: PropTypes.number
   }
 
   getType = () => this.player && this.player.source && this.player.source.type;
@@ -140,6 +141,7 @@ class Plyr extends Component {
   enterFullscreen = () => this.player && this.player.fullscreen.enter();
   exitFullscreen = () => this.player && this.player.fullscreen.exit();
   toggleFullscreen = () => this.player && this.player.fullscreen.toggle()
+  setCurrentTime = time => this.player.currentTime = time;
 
   componentDidMount() {
     const defaultOptions = Object.keys(defaultProps).reduce((acc, current) => ({
@@ -219,6 +221,9 @@ class Plyr extends Component {
     }
     if (this.props.sources.length > 0 && prevProps.sources.length > 0 && prevProps.sources[0].src !== this.props.sources[0].src){
       this.updateHtmlVideoSource(this.props.sources[0].src, 'video', '');
+    }
+    if (this.props.currentTime !== prevProps.currentTime) {
+      this.setCurrentTime(this.props.currentTime);
     }
   }
 
