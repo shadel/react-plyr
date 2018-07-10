@@ -222,7 +222,7 @@ class Plyr extends Component {
     if (this.props.sources.length > 0 && prevProps.sources.length > 0 && prevProps.sources[0].src !== this.props.sources[0].src){
       this.updateHtmlVideoSource(this.props.sources[0].src, 'video', '');
     }
-    if (this.props.currentTime !== this.player.currentTime) {
+    if (this.props.currentTime !== undefined && this.props.currentTime !== this.player.currentTime) {
       this.setCurrentTime(this.props.currentTime);
     }
   }
