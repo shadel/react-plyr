@@ -178,6 +178,10 @@ class Plyr extends Component {
         this.props.onLoadedData && this.props.onLoadedData();
       });
 
+      this.player.on('loadedmetadata', () => {
+        this.props.onLoadedmetadata && this.props.onLoadedmetadata();
+      });
+
       this.player.on('seeked', () => {
         const time = this.getCurrentTime();
         this.props.onSeeked && this.props.onSeeked(time);
@@ -222,7 +226,7 @@ class Plyr extends Component {
     if (this.props.sources.length > 0 && prevProps.sources.length > 0 && prevProps.sources[0].src !== this.props.sources[0].src){
       this.updateHtmlVideoSource(this.props.sources[0].src, 'video', '');
     }
-    if (this.props.currentTime !== undefined && this.props.currentTime !== this.player.currentTime) {
+    if (this.props.currentTime && this.props.currentTime !== this.player.currentTime) {
       this.setCurrentTime(this.props.currentTime);
     }
   }
