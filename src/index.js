@@ -178,8 +178,8 @@ class Plyr extends Component {
         this.props.onLoadedData && this.props.onLoadedData();
       });
 
-      this.player.on('loadedmetadata', () => {
-        this.props.onLoadedmetadata && this.props.onLoadedmetadata();
+      this.player.on('loadedmetadata', (...args) => {
+        this.props.onLoadedmetadata && this.props.onLoadedmetadata(...args);
       });
 
       this.player.on('seeked', () => {
